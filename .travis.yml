@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - lts/*
 before_script:
+  - rm -rf docs
   - npm run build
 jobs:
   include:

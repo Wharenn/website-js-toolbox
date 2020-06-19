@@ -10,7 +10,7 @@ Set of javascript tools and behaviors to use atop classical back applications.
 npm install website-js-toolbox
 ```
 ```bash
-yarn add cookie-consent-tools
+yarn add website-js-toolbox
 ```
 
 ## Usage
@@ -75,17 +75,7 @@ npm run demo:start
 ```
 
 ## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
+This project is not open to contributions, but feel free to use it according to the terms of the license.
 
 ## License
 [MIT](./LICENSE.md)
-
-## Project status
-
-This project is a side project I created to handle user cookie consent on multiple websites I own. After looking to the existing projects on GitHub, I did not find one which was light, easy to use and detached from companies who where making GDPR compliance their business.
-
-It is honestly the first open-source project I started on my own, and it was the opportunity for me to discover and implement all tools and processes which guarantee quality and support on this kind of project. 
-
-Feel free to contribute and share ideas!

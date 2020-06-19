@@ -2,7 +2,6 @@ import * as WebsiteJsToolbox from "website-js-toolbox";
 
 const { FlashMessages } = WebsiteJsToolbox;
 
-
 export default {
     init: () => {
         document.querySelector('[data-flash-button=success]').addEventListener('click', () => {
