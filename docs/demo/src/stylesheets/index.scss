@@ -1,0 +1,28 @@
+@import '../../node_modules/website-js-toolbox/dist/website-js-toolbox.min.css';
+@import 'defaults.scss';
+
+.Demo {
+    &__Container {
+        display: flex;
+        min-height: 100vh;
+    }
+
+    &__Menu {
+        background: #eee;
+        width: 15rem;
+        flex-shrink: 0;
+        padding: 1rem;
+
+        ul {
+            padding: 0 1rem;
+        }
+        
+        a.active {
+            font-weight: bold;
+        }
+    }
+
+    &__Content {
+        padding: 1rem 2rem;
+    }
+}

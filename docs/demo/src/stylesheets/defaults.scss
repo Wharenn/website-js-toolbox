@@ -1,0 +1,45 @@
+$transition: .5s linear;
+
+body {
+    background: #fff;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    text-transform: uppercase;
+    border-bottom: 1px solid #aaa;
+}
+
+textarea,
+input[type=text] {
+    padding: 0.5rem;
+    border: 1px solid #EEE;
+    font-size: 1rem;
+}
+
+textarea {
+    width: 20rem;
+}
+
+button,
+input[type=submit] {
+    border: 1px solid #eee;
+    background: #eee;
+    padding: .5rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 999px;
+    outline: none;
+    transition: $transition;
+
+    &:hover {
+        cursor: pointer;
+        border: 1px solid #aaa;       
+        transition: $transition;
+    }
+}

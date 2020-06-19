@@ -1,0 +1,64 @@
+{
+  "name": "website-js-toolbox",
+  "version": "0.0.1",
+  "description": "Set of javascript tools and behaviors to use atop classical back applications.",
+  "main": "dist/website-js-toolbox.min.js",
+  "scripts": {
+    "build": "webpack --env.mode=production",
+    "dev": "webpack --watch --devtool eval --env.mode=development",
+    "lint:js": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "lint:scss": "stylelint src/**/*.scss",
+    "test:all": "npm run lint:scss && npm run lint:js",
+    "demo:install": "cd docs/demo && npm install",
+    "demo:dev": "cd docs/demo && npm run dev",
+    "demo:start": "cd docs/demo && npm run start"
+  },
+  "keywords": [
+    "toolbox",
+    "javascript",
+    "behaviors"
+  ],
+  "author": "Romain Mouillard",
+  "license": "MIT",
+  "dependencies": {
+    "notyf": "^3.7.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@typescript-eslint/eslint-plugin": "^3.3.0",
+    "@typescript-eslint/parser": "^3.3.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^25.4.0",
+    "babel-loader": "^8.1.0",
+    "coveralls": "^3.1.0",
+    "css-loader": "^3.5.3",
+    "cssnano": "^4.1.10",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-prettier": "^3.1.3",
+    "jest": "^25.4.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "postcss": "^7.0.27",
+    "postcss-loader": "^3.0.0",
+    "precss": "^4.0.0",
+    "prettier": "^2.0.5",
+    "stylelint": "^13.3.2",
+    "stylelint-config-standard": "^20.0.0",
+    "ts-loader": "^7.0.5",
+    "typescript": "^3.9.5",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Wharenn/website-js-toolbox.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Wharenn/website-js-toolbox/issues"
+  },
+  "homepage": "https://github.com/Wharenn/website-js-toolbox#readme"
+}
