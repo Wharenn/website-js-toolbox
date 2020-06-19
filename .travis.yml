@@ -16,7 +16,7 @@ deploy:
     file_glob: true
     file: dist/*
     on:
-      repo: Wharenn/cookie-consent-tools
+      repo: Wharenn/website-js-toolbox
       tags: true
   - provider: npm
     email: $NPM_ACCOUNT
