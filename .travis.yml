@@ -9,3 +9,20 @@ jobs:
     - stage: Unit Tests
       script:
         - npm run test:all
+deploy:
+  - provider: releases
+    api_key:
+      secure: iltibVhRM3ynBDDmI2Ns+5FmWA37/fqXL0EHxWONPMvMTYbGTzZTHkti5jGe20bNZOG9tgpuOlhqilt+kHJi/LMoUlGy0HvZDTrjyD611m+27a4uuCWB4DdML8O1UMdqaxy1wHOqXj692t7jw2YHCIpVcwVccAhshXjnPU4BbcR05Q6dVWd6k9Ahtvsnumc+EFiapWsQO5zgPqmAo7GfjsPW6mFMJG7HE8bON6eMhU22JFJo59wS0AupVNm4GSHJhImbT7ZLOpCTmNGwlIfQ6gNS+qun+uT5cy1n245rZPqFvvIQ9yIAZJS3kDrMsxwJUQPqMVXhYRt2dl1Kkk63JcCY5If1tNxVAJSE7fVB+1Kw2znR6vippCtpqrMS1zbDaK492J1Tbt4ueV999mb3SWJstmzjVERcTEpK9S/tU/jKxzX/AunSpsjvkINbeW0Fou3xz/wvjvptvwnuhjMpxTiGpMz7w97asWSj7dxwJ9AbcWKGfwOk2NHx+0jVvKquw9wUh8uTa2mc4PwhWV4b1YWxs7I0G8FS8x4qaVNUlU8daVa0Cpf1y/Y4VyIdz2f0m/YuzLHNhAxTphbfvsdNkWIxSXmX7pWnJzXDTh0CZRqDDUSLcaSNrr/RoN4jze7zeAoaCr48xTYwN5nO/d/b6USuPwQejg6OvtMKFpyDp5w=
+    file_glob: true
+    file: dist/*
+    on:
+      repo: Wharenn/cookie-consent-tools
+      tags: true
+  - provider: npm
+    email: $NPM_ACCOUNT
+    api_key:
+      secure: ysefNokYEsBRNFsWc5ibrZnBpG+GMvf0Ewp49YBuxOf1QQosuW31EyWbMZ7+RMQ9BVeH9vr9NAkdMI7dvU79c2pCDFb6Iy8jHs1uBXmaFHYsJ/4XX++m4f3uqRJ7uoz8eYbPYersWJLQPNBXlMdRqy3rGbhNMzWzmxxIa7NpAHiGZRSLiOIgQksDrmhsv/lxRJmuK30bwrW25WFpkUzznHT/F8KgF7sspxcUteU32GgB4ArxzJvpBFBtVfDn9xGXrKIWozsSnhDe3BoxZ/vkoDOVcWubkX/KSqiF0r0bcNtE7D+6xlaQwzQ9502b6l3jH3uWDFJBZHZcJZcM7UiNNPcjoKUWewaE7WDv4XOHyC/FzaxXvyjpsjUdKXQ/jrj9NrQGhGS5XpI9Ry/JRssBroGdXLybB4Ycu45g7T0d9R8as8TTXj2LPpl1qDf/zQL2c+EkOQrz/oJPbEsPPBgcjIl85atAQfVif5UESieiT3GuqY5E00e9uT+1tNYf4VU6U0olUAggIIXuHXV77NV29PvmRNFVTJsnIEYL8C6o9d7wn2gkO3M5ayDdYFV98aspeKje5q0X5U9y1VPpi/867GDloYdnPa2UI/hZlJglPcA6hCU1IVPagtNhyUTufQ/pmDKze+jPz/6uGy36wl9RnMlQH6YDUCahHGJCoaHUGLA=
+    on:
+      repo: Wharenn/website-js-toolbox
+      tags: true
+    skip_cleanup: 'true'
