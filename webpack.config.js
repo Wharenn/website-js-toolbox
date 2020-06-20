@@ -76,7 +76,6 @@ module.exports = env => ({
     splitChunks: {
       cacheGroups: {
         default: false,
-        vendors: false,
         // vendor chunk
         vendor: {
           // sync + async chunks

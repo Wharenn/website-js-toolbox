@@ -12,7 +12,8 @@
     "demo:install": "cd docs/demo && npm install",
     "demo:build": "cd docs/demo && npm run build",
     "demo:dev": "cd docs/demo && npm run dev",
-    "demo:start": "cd docs/demo && npm run start"
+    "demo:start": "cd docs/demo && npm run start",
+    "precommit": "rm -rf dist && rm -rf docs/demo/dist && npm run build && npm run demo:build"
   },
   "keywords": [
     "toolbox",
