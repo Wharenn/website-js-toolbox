@@ -10,6 +10,7 @@
     "lint:scss": "stylelint src/**/*.scss",
     "test:all": "npm run lint:scss && npm run lint:js",
     "demo:install": "cd docs/demo && npm install",
+    "demo:build": "cd docs/demo && npm run build",
     "demo:dev": "cd docs/demo && npm run dev",
     "demo:start": "cd docs/demo && npm run start"
   },
@@ -21,7 +22,8 @@
   "author": "Romain Mouillard",
   "license": "MIT",
   "dependencies": {
-    "notyf": "^3.7.0"
+    "notyf": "^3.7.0",
+    "sweetalert2": "^9.15.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",

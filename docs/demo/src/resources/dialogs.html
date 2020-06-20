@@ -1,0 +1,70 @@
+<h1>Dialogs</h1>
+<p>Dialogs, confirms and alter boxes powered by <em>sweetalert2</em></p>
+
+<h2>Alerts</h2>
+<h3>Trigger from script</h3>
+<div class="content-box">
+    <button data-demo-dialog="alert">Example Alert</button>
+    <button data-demo-dialog="alert-full">Example Alert (full)</button>
+</div>
+
+<h3>Trigger from DOM</h3>
+<p>See source of buttons to have an example.</p>
+<div class="content-box">
+    <button data-dialog="alert" data-dialog-message="This is an alert!">
+        Alert
+    </button>
+
+    <button data-dialog="alert" data-dialog-title="Alert title" data-dialog-message="This is the alert message"
+        data-dialog-icon="info" data-dialog-button-confirm="Yes, ok">
+        Alert (full custom)
+    </button>
+</div>
+
+<h2>Confirms</h2>
+<h3>Trigger from script</h3>
+<div class="content-box">
+    <button data-demo-dialog="confirm">Example Confirm</button>
+    <button data-demo-dialog="confirm-full">Example Confirm (full)</button>
+</div>
+
+<h3>Trigger from DOM</h3>
+<p>See source of buttons to have an example.</p>
+<div class="content-box">
+    <h4>Links</h4>
+    <p class="marged-left">
+        <a href="#dialogs#confirmed" data-dialog="confirm" data-dialog-message="Are you sure?">
+            Confirm Link
+        </a>
+        &nbsp;
+        <a href="#dialogs#confirmed" data-dialog="confirm" data-dialog-title="Confirm your choice"
+            data-dialog-message="Are you really sure to do this?" data-dialog-icon="warning"
+            data-dialog-button-confirm="Yes, ok" data-dialog-button-cancel="Not at all!">
+            Confirm Link (full custom)
+        </a>
+    </p>
+
+    <h4>Form Validation</h4>
+    <form method="POST" action="#dialogs" class="marged-left">
+        <p>
+            <button data-dialog="confirm" data-dialog-message="Are you sure?">
+                Confirm Button
+            </button>
+            <button data-dialog="confirm" data-dialog-title="Confirm your choice"
+                data-dialog-message="Are you really sure to do this?" data-dialog-icon="warning"
+                data-dialog-button-confirm="Yes, ok" data-dialog-button-cancel="Not at all!">
+                Confirm Button (full custom)
+            </button>
+        </p>
+    </form>
+
+    <h4>Remote Form Validation</h4>
+    <form method="POST" action="#dialogs" id="remote-form" class="dashed padded marged-left">
+        Remote Form is here
+    </form>
+    <p class="marged-left">
+        <button data-dialog="confirm" data-dialog-message="Are you sure?" data-dialog-remote-form-id="remote-form">
+            Confirm Button (remote form)
+        </button>
+    </p>
+</div>

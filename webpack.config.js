@@ -42,7 +42,13 @@ module.exports = env => ({
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: 'ts-loader',
+        use: {
+          loader: 'ts-loader',
+          options: {
+            transpileOnly: true,
+            experimentalWatchApi: true,
+          },
+        },
       },
       {
         test: /\.js$/,
@@ -64,6 +70,7 @@ module.exports = env => ({
   ],
   externals: {
     notyf: 'notyf',
+    sweetalert2: 'sweetalert2',
   },
   optimization: {
     splitChunks: {
