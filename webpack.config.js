@@ -71,6 +71,7 @@ module.exports = env => ({
   externals: {
     notyf: 'notyf',
     sweetalert2: 'sweetalert2',
+    'tingle.js': 'tingle.js',
   },
   optimization: {
     splitChunks: {

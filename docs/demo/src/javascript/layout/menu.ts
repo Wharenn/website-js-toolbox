@@ -1,6 +1,7 @@
 import FlashMessages from '../pages/flashMessages';
 import Logger from '../pages/logger';
 import Dialogs from '../pages/dialogs';
+import Modal from '../pages/modal';
 
 interface Page {
   id: string;
@@ -23,6 +24,11 @@ const pages = [
     id: 'dialogs',
     title: 'Dialogs & Alerts',
     onLoaded: () => Dialogs.init(),
+  },
+  {
+    id: 'modal',
+    title: 'Modal',
+    onLoaded: () => Modal.init(),
   },
 ];
 

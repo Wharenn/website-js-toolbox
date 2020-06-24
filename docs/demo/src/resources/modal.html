@@ -1,0 +1,58 @@
+<h1>Modal</h1>
+<p>Modal powered by <em>tingle.js</em></p>
+
+<h2>Trigger from script</h2>
+<div class="content-box">
+    <p class="marged-left">
+        <button data-demo-modal-self="open">Open Modal (dom of this page)</button>
+        <button data-demo-modal-remote="open">Open Modal (remote url)</button>
+    </p>
+</div>
+
+<h2>Trigger from DOM</h2>
+<div class="content-box">
+    <h4>Modals with informative content</h4>
+    <p class="marged-left">
+        <a href="#"
+           data-modal-content-element-id="modal-content"
+           data-modal-open>
+           Link opening a DOM node on this page in modal
+        </a><br/>
+
+        <a href="/src/resources/fixtures/modal.html"
+           data-modal-open>
+           Link opening target in modal
+        </a><br/>
+
+        <a href="/src/resources/fixtures/fooModal0123456789.html"
+           data-modal-open>
+           Link opening a 4xx target in modal
+        </a>
+    </p>
+    <div id="modal-content" class="modal-hidden">
+        This block is a DOM node of this page.
+    </div>
+
+    <h4>Modals with forms inside</h4>
+    <p class="marged-left">
+        <a href="/src/resources/fixtures/modalWithForm.html"
+           data-modal-open>
+           Link opening target form in modal (success form)
+        </a>
+        <br/>
+        <a href="/src/resources/fixtures/modalWithFormMessage.html"
+           data-modal-open>
+           Link opening target form in modal (success form, with message)
+        </a>
+        <br/>
+        <a href="/src/resources/fixtures/modalWithFormError.html"
+           data-modal-open>
+           Link opening target form in modal (errored form)
+        </a>
+        <br/>
+        <a href="/src/resources/fixtures/modalWithFormDanger.html"
+           data-modal-open>
+           Link opening target form in modal (danger form)
+        </a>
+    </p>
+</div>

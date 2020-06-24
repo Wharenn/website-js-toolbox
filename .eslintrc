@@ -50,6 +50,8 @@
         "no-duplicate-imports": 0,
         // We allow reassignation of parameters
         "no-param-reassign": 0,
+        // Ease module development
+        "no-use-before-define": 0,
         // We use global requires in various places, e.g. code splitting instances.
         "global-require": 0,
         // Remove requirement to set extensions in imports
