@@ -3,9 +3,18 @@
 /* eslint-disable class-methods-use-this */
 
 const users = [
-  { id: 1, name: 'Lloyd', age: 43 },
-  { id: 2, name: 'Mona', age: 34 },
-  { id: 3, name: 'Francesco', age: 24 },
+  { id: 1, name: 'Lloyd', description: 'Teacher' },
+  { id: 2, name: 'Mona', description: 'Student' },
+  { id: 3, name: 'Francesco', description: 'Director' },
+];
+const usersNext = [
+  { id: 4, name: 'Patrick', description: 'Teacher' },
+  { id: 5, name: 'Jason', description: 'Student' },
+  { id: 6, name: 'Gwendolyn', description: 'Director' },
+];
+const usersFinal = [
+  { id: 7, name: 'Andrea', description: 'Teacher' },
+  { id: 8, name: 'Massimo', description: 'Student' },
 ];
 
 const wait = (ms) => {
@@ -24,7 +33,46 @@ class Mock {
     return [
       router.get('/mock', (ctx) => {
         ctx.response.type = 'json';
-        ctx.response.body = users;
+        ctx.response.body = {
+          data: users,
+        };
+      }),
+      router.get('/mock/seemore/1', (ctx) => {
+        wait(2000);
+        ctx.response.type = 'json';
+        ctx.response.body = {
+          data: {
+            items: users,
+            nextLink: '/mock/seemore/2',
+          },
+        };
+      }),
+      router.get('/mock/seemore/2', (ctx) => {
+        wait(2000);
+        ctx.response.type = 'json';
+        ctx.response.body = {
+          data: {
+            items: usersNext,
+            nextLink: '/mock/seemore/3',
+          },
+        };
+      }),
+      router.get('/mock/seemore/3', (ctx) => {
+        wait(2000);
+        ctx.response.type = 'json';
+        ctx.response.body = {
+          data: {
+            items: usersFinal,
+          },
+        };
+      }),
+      router.post('/mock/search/success', (ctx) => {
+        // Volunteer wait to see loading state
+        wait(2000);
+        ctx.response.type = 'json';
+        ctx.response.body = {
+          data: users,
+        };
       }),
       router.post('/mock/post/success', (ctx) => {
         // Volunteer wait to see loading state

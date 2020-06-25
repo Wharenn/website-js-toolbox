@@ -1,9 +1,10 @@
 import tingle from 'tingle.js';
-import Loader from './Loader';
-import asyncSubmit, { FormResponse } from './AsyncSubmit';
-import '../../node_modules/tingle.js/dist/tingle.min.css';
-import './modal.scss';
-import FlashMessages from './FlashMessages';
+import Loader from '../../Utils/Loader';
+import '../../../node_modules/tingle.js/dist/tingle.min.css';
+import './Modal.scss';
+import asyncSubmit, { FormResponse } from '../../Utils/AsyncSubmit';
+import { hideElement } from '../../Utils/Hide';
+import FlashMessages from '../FlashMessages';
 
 interface ModalObject {
   setContent: CallableFunction;
@@ -39,14 +40,19 @@ const setLoading = (modal: ModalObject, loadingState: boolean): void => {
 };
 
 const createModal = (onOpen?: CallableFunction): ModalObject => {
-  return new tingle.modal({
+  const modal = new tingle.modal({
     footer: true,
     stickyFooter: true,
     closeMethods: ['overlay', 'button', 'escape'],
     closeLabel: 'Close',
     cssClass: ['Modal'],
     onOpen,
+    onClose: () => {
+      modal.destroy();
+    },
   });
+
+  return modal;
 };
 
 const closeModal = (modal: ModalObject) => {
@@ -94,27 +100,39 @@ const submitModal = (modal: ModalObject, onFormSuccess?: CallableFunction, onFor
   );
 };
 
-const hideElement = (element: HTMLElement) => {
-  element.style.position = 'absolute';
-  element.style.left = '-9999px';
-};
-
 /**
  * Open a modal containing the element targeted by the given id
  */
-const openSelfModal = (elementId: string, onOpen?: CallableFunction) => {
+const openSelfModal = (elementId: string, onOpen?: CallableFunction): ModalObject => {
   const modal = createModal(onOpen);
   const contentElement = document.getElementById(elementId);
   const content = contentElement ? contentElement.innerHTML : `Could not found element with id "${elementId}"`;
 
   modal.setContent(content);
   modal.open();
+
+  return modal;
+};
+
+/**
+ * Open a modal containing the element targeted by the given id
+ */
+const openEmptyModal = (onOpen?: CallableFunction): ModalObject => {
+  const modal = createModal(onOpen);
+  modal.open();
+
+  return modal;
 };
 
 /**
  * Open a modal containing the result of an url, with optional callbacks
  */
-const openRemoteModal = (href: string, onOpen?: CallableFunction, onFormSuccess?: CallableFunction, onFormError?: CallableFunction) => {
+const openRemoteModal = (
+  href: string,
+  onOpen?: CallableFunction,
+  onFormSuccess?: CallableFunction,
+  onFormError?: CallableFunction,
+): ModalObject => {
   const modal = createModal(onOpen);
   setLoading(modal, true);
   modal.open();
@@ -146,16 +164,21 @@ const openRemoteModal = (href: string, onOpen?: CallableFunction, onFormSuccess?
         hideElement(button);
       });
     });
+
+  return modal;
 };
 
 const Modal = {
-  open: (url: string, onOpen?: CallableFunction, onFormSuccess?: CallableFunction, onFormError?: CallableFunction): void => {
+  open: (url: string, onOpen?: CallableFunction, onFormSuccess?: CallableFunction, onFormError?: CallableFunction): ModalObject => {
     openRemoteModal(url, onOpen, onFormSuccess, onFormError);
   },
-  openElement: (elementId: string, onOpen?: CallableFunction): void => openSelfModal(elementId, onOpen),
+  openElement: (elementId: string, onOpen?: CallableFunction): ModalObject => openSelfModal(elementId, onOpen),
+  openEmpty: (onOpen?: CallableFunction): ModalObject => openEmptyModal(onOpen),
 
-  attachToDOM: (): void => {
-    document.querySelectorAll<HTMLElement>('[data-modal-open]').forEach((el) => {
+  setContent: (modal: ModalObject, content: string): void => modal.setContent(content),
+
+  attachToDOM: (element?: HTMLElement): void => {
+    (element || document).querySelectorAll<HTMLElement>('[data-modal-open]').forEach((el) => {
       el.addEventListener('click', (e) => {
         e.preventDefault();
 

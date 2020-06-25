@@ -62,8 +62,8 @@ const Dialogs = {
   /**
    * Parse DOM and attach dialogs on elements
    */
-  attachToDOM: (): void => {
-    document.querySelectorAll<HTMLElement>('[data-dialog]').forEach((el) => {
+  attachToDOM: (element?: HTMLElement): void => {
+    (element || document).querySelectorAll<HTMLElement>('[data-dialog]').forEach((el) => {
       const type = el.dataset.dialog;
       if (type === 'alert') {
         el.addEventListener('click', (e) => {

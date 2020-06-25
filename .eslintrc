@@ -54,6 +54,8 @@
         "no-use-before-define": 0,
         // We use global requires in various places, e.g. code splitting instances.
         "global-require": 0,
+        // Don't care about strange opinionated rules
+        "no-plusplus": 0,
         // Remove requirement to set extensions in imports
         "import/extensions": "off",
         // Allow non-default exports.

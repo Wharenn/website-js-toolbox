@@ -23,6 +23,7 @@
   "author": "Romain Mouillard",
   "license": "MIT",
   "dependencies": {
+    "handlebars": "^4.7.6",
     "notyf": "^3.7.0",
     "sweetalert2": "^9.15.1",
     "tingle.js": "^0.15.3"

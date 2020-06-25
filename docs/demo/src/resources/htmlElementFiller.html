@@ -1,0 +1,19 @@
+<h1>HTMLElement Filler</h1>
+<p>Use instructions on <em>data-</em> attributes to update HTMLElements on the fly based on a javascript object.</p>
+
+<h2>Trigger from script</h2>
+<div class="content-box">
+    <p class="marged-left">
+        <a href="#" data-demo-filler>
+           Apply Filler (inner html)
+        </a>
+        <br/>
+        <div class="dashed padded" data-filler='{"source":"foo"}'>
+            This content will be filled.
+        </div>
+        <br/>
+        <a href="#" data-filler='{"source":"bar.link", "target":"href"}'>
+            This href will point to /foo/bar
+        </div>
+    </p>
+</div>

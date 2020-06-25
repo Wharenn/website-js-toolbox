@@ -1,0 +1,111 @@
+<h1>See More</h1>
+<p>Progressive display of a list of elements.</p>
+
+<h2>Trigger from Script</h2>
+<div class="content-box">
+    <p class="marged-left">
+        <button data-demo-seemore>Apply See More</button>
+        <div class="dashed padded" data-demo-seemore-container>
+            <div data-seemore-initial-items>
+                { 
+                    "items": [
+                        {
+                            "id": 0,
+                            "name": "Bobby",
+                            "description": "Initial asset"
+                        }
+                    ] 
+                }
+            </div>
+            <script data-seemore-template type="text/x-handlebars-template">
+                {{#each items}}
+                    <div>
+                        <b>{{this.name}}</b>
+                        <div>
+                            <small>{{this.description}}</small>
+                        </div>
+                    </div>
+                {{/each}}
+            </script>
+            <div data-seemore-bottom>
+                <a href="/mock/seemore/1" data-seemore-link>See More (To be enabled by above button first)</a>
+            </div>
+        </div>
+    </p>
+</div>
+
+
+<h2>Trigger from DOM</h2>
+<div class="content-box">
+    <p class="marged-left">
+        <div class="dashed padded" data-seemore>
+            <div data-seemore-initial-items>
+                { 
+                    "items": [
+                        {
+                            "id": 0,
+                            "name": "Bobby",
+                            "description": "Initial asset"
+                        }
+                    ] 
+                }
+            </div>
+            <script data-seemore-template type="text/x-handlebars-template">
+                {{#each items}}
+                    <div>
+                        <b>{{this.name}}</b>
+                        <div>
+                            <small>{{this.description}}</small>
+                        </div>
+                    </div>
+                {{/each}}
+            </script>
+            <div data-seemore-bottom>
+                <a href="/mock/seemore/1" data-seemore-link>See more</a>
+            </div>
+        </div>
+
+        <div class="dashed padded" data-seemore>
+            <div data-seemore-initial-items>
+                { 
+                    "items": [
+                        {
+                            "id": 0,
+                            "name": "Bobby",
+                            "description": "Initial asset"
+                        }
+                    ] 
+                }
+            </div>
+            <script data-seemore-template type="text/x-handlebars-template">
+                {{#each items}}
+                    <div>
+                        <b>{{this.name}}</b>
+                        <div>
+                            <small>{{this.description}}</small>
+                        </div>
+                    </div>
+                {{/each}}
+            </script>
+            <div data-seemore-bottom>
+                <a href="/mock/seemore/1" data-seemore-link>See more (same, to test isolation)</a>
+            </div>
+        </div>
+
+        <div class="dashed padded" data-seemore>
+            <script data-seemore-template type="text/x-handlebars-template">
+                {{#each items}}
+                    <div>
+                        <b>{{this.name}}</b>>
+                        <div>
+                            <small>{{this.description}}</small>
+                        </div>
+                    </div>
+                {{/each}}
+            </script>
+            <div data-seemore-bottom>
+                <a href="/foo/lol/bar/whatever" data-seemore-link>See more (errored)</a>
+            </div>
+        </div>
+    </p>
+</div>

@@ -1,5 +1,6 @@
 export interface FormResponse {
   message?: string;
+  data?: Record<string, unknown>;
 }
 
 const asyncSubmit = (form: HTMLFormElement, onSuccess?: CallableFunction, onError?: CallableFunction): void => {

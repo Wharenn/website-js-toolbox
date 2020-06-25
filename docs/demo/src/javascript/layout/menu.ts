@@ -2,6 +2,9 @@ import FlashMessages from '../pages/flashMessages';
 import Logger from '../pages/logger';
 import Dialogs from '../pages/dialogs';
 import Modal from '../pages/modal';
+import SearchModal from '../pages/searchModal';
+import SeeMore from '../pages/seeMore';
+import HtmlElementFiller from '../pages/htmlElementFiller';
 
 interface Page {
   id: string;
@@ -29,6 +32,21 @@ const pages = [
     id: 'modal',
     title: 'Modal',
     onLoaded: () => Modal.init(),
+  },
+  {
+    id: 'searchModal',
+    title: 'Search Modal',
+    onLoaded: () => SearchModal.init(),
+  },
+  {
+    id: 'seeMore',
+    title: 'See More',
+    onLoaded: () => SeeMore.init(),
+  },
+  {
+    id: 'htmlElementFiller',
+    title: 'HTMLElement Filler',
+    onLoaded: () => HtmlElementFiller.init(),
   },
 ];
 
