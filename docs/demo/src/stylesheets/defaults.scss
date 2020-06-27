@@ -1,4 +1,6 @@
 $transition: .5s linear;
+$fontColor: #333;
+$colorPrimary: #3c8dbc;
 
 body {
     background: #fff;
@@ -6,6 +8,7 @@ body {
     margin: 0;
     min-height: 100vh;
     font-size: 0.95rem;
+    color: $fontColor;
 }
 
 * {
@@ -37,7 +40,8 @@ textarea {
 }
 
 button,
-input[type=submit] {
+input[type=submit],
+.Button {
     border: 1px solid #eee;
     background: #eee;
     padding: .5rem 1rem;
@@ -52,4 +56,19 @@ input[type=submit] {
         border: 1px solid #aaa;       
         transition: $transition;
     }
+}
+
+.Button {
+  display: inline-block;
+  text-decoration: none;
+  color: $fontColor;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &--primary {
+    background: $colorPrimary;
+    color: white;
+  }
 }

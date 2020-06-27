@@ -5,10 +5,15 @@
 .SeeMore {
   &__Loader {
     text-align: center;
+    padding: 1rem;
 
     svg {
-      fill: #000 !important;
-      height: 1rem;
+      fill: #555555 !important;
+      height: 3rem;
+
+      path {
+        fill: #555555 !important;
+      }
     }
 
     &--hidden {

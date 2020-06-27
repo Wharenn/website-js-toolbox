@@ -3,18 +3,18 @@
 /* eslint-disable class-methods-use-this */
 
 const users = [
-  { id: 1, name: 'Lloyd', description: 'Teacher' },
-  { id: 2, name: 'Mona', description: 'Student' },
-  { id: 3, name: 'Francesco', description: 'Director' },
+  { id: 1, name: 'Lloyd', description: 'Teacher', picture: '/src/resources/fixtures/face.png' },
+  { id: 2, name: 'Mona', description: 'Student', picture: '/src/resources/fixtures/face2.png' },
+  { id: 3, name: 'Francesco', description: 'Director', picture: '/src/resources/fixtures/face.png' },
 ];
 const usersNext = [
-  { id: 4, name: 'Patrick', description: 'Teacher' },
-  { id: 5, name: 'Jason', description: 'Student' },
-  { id: 6, name: 'Gwendolyn', description: 'Director' },
+  { id: 4, name: 'Patrick', description: 'Teacher', picture: '/src/resources/fixtures/face.png' },
+  { id: 5, name: 'Jason "Jaz" Washington', description: 'Student', picture: '/src/resources/fixtures/face.png' },
+  { id: 6, name: 'Gwendolyn', description: 'Director', picture: '/src/resources/fixtures/face2.png' },
 ];
 const usersFinal = [
-  { id: 7, name: 'Andrea', description: 'Teacher' },
-  { id: 8, name: 'Massimo', description: 'Student' },
+  { id: 7, name: 'Andrea', description: 'Teacher', picture: '/src/resources/fixtures/face2.png' },
+  { id: 8, name: 'Massimo', description: 'Student', picture: '/src/resources/fixtures/face.png' },
 ];
 
 const wait = (ms) => {
@@ -35,6 +35,14 @@ class Mock {
         ctx.response.type = 'json';
         ctx.response.body = {
           data: users,
+        };
+      }),
+      router.get('/mock/template', (ctx) => {
+        wait(2000);
+        ctx.response.type = 'json';
+        ctx.response.body = {
+          name: 'Brenda Brendon',
+          description: 'Such a Brend',
         };
       }),
       router.get('/mock/seemore/1', (ctx) => {
@@ -71,7 +79,10 @@ class Mock {
         wait(2000);
         ctx.response.type = 'json';
         ctx.response.body = {
-          data: users,
+          data: {
+            items: users,
+            nextLink: '/mock/seemore/2',
+          },
         };
       }),
       router.post('/mock/post/success', (ctx) => {

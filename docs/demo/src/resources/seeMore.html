@@ -14,12 +14,13 @@
                             "name": "Bobby",
                             "description": "Initial asset"
                         }
-                    ] 
+                    ],
+                    "nextLink": "/mock/seemore/1"
                 }
             </div>
             <script data-seemore-template type="text/x-handlebars-template">
                 {{#each items}}
-                    <div>
+                    <div data-seemore-item>
                         <b>{{this.name}}</b>
                         <div>
                             <small>{{this.description}}</small>
@@ -28,7 +29,7 @@
                 {{/each}}
             </script>
             <div data-seemore-bottom>
-                <a href="/mock/seemore/1" data-seemore-link>See More (To be enabled by above button first)</a>
+                <a href="#" data-seemore-link>See More (To be enabled by above button first)</a>
             </div>
         </div>
     </p>
@@ -47,12 +48,13 @@
                             "name": "Bobby",
                             "description": "Initial asset"
                         }
-                    ] 
+                    ],
+                    "nextLink": "/mock/seemore/1"
                 }
             </div>
             <script data-seemore-template type="text/x-handlebars-template">
                 {{#each items}}
-                    <div>
+                    <div data-seemore-item>
                         <b>{{this.name}}</b>
                         <div>
                             <small>{{this.description}}</small>
@@ -61,7 +63,7 @@
                 {{/each}}
             </script>
             <div data-seemore-bottom>
-                <a href="/mock/seemore/1" data-seemore-link>See more</a>
+                <a href="#" data-seemore-link>See more</a>
             </div>
         </div>
 
@@ -74,12 +76,13 @@
                             "name": "Bobby",
                             "description": "Initial asset"
                         }
-                    ] 
+                    ],
+                    "nextLink": "/mock/seemore/1"
                 }
             </div>
             <script data-seemore-template type="text/x-handlebars-template">
                 {{#each items}}
-                    <div>
+                    <div data-seemore-item>
                         <b>{{this.name}}</b>
                         <div>
                             <small>{{this.description}}</small>
@@ -88,14 +91,14 @@
                 {{/each}}
             </script>
             <div data-seemore-bottom>
-                <a href="/mock/seemore/1" data-seemore-link>See more (same, to test isolation)</a>
+                <a href="#" data-seemore-link>See more (same, to test isolation)</a>
             </div>
         </div>
 
         <div class="dashed padded" data-seemore>
             <script data-seemore-template type="text/x-handlebars-template">
                 {{#each items}}
-                    <div>
+                    <div data-seemore-item>
                         <b>{{this.name}}</b>>
                         <div>
                             <small>{{this.description}}</small>
