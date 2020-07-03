@@ -4,6 +4,7 @@ import Dialogs from '../pages/dialogs';
 import Modal from '../pages/modal';
 import SearchModal from '../pages/searchModal';
 import SeeMore from '../pages/seeMore';
+import Template from '../pages/template';
 import HtmlElementFiller from '../pages/htmlElementFiller';
 
 interface Page {
@@ -37,6 +38,11 @@ const pages = [
     id: 'searchModal',
     title: 'Search Modal',
     onLoaded: () => SearchModal.init(),
+  },
+  {
+    id: 'template',
+    title: 'Template',
+    onLoaded: () => Template.init(),
   },
   {
     id: 'seeMore',

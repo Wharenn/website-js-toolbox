@@ -1,6 +1,39 @@
 .Modal {
+  &--large {
+    .tingle-modal-box {
+      width: 80% !important;
+    }
+    @media (max-width: 540px) {
+      .tingle-modal-box {
+        width: 100% !important;
+      } 
+    }
+  }
+
+  @media (max-width: 540px) {
+    .tingle-modal__close {
+      border-radius: 0;
+      margin: 0;
+    }
+  }
+
   .tingle-modal-box__content {
     position: relative;
+    padding: 2rem;
+  }
+
+  .tingle-modal-box__footer {
+    padding: 1rem;
+
+    .tingle-btn {
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  &--withFooter {
+    .tingle-modal-box__content {
+      padding-bottom: 0;
+    }
   }
 
   &__Loading {

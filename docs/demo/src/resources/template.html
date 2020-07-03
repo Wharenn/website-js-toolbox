@@ -1,0 +1,93 @@
+<h1>Template</h1>
+<p>Insert DOM content using a template filled by data from an object or JSON from a remote call.</p>
+
+<h2>Trigger from Script</h2>
+<div class="content-box">
+    <p class="marged-left">
+        <button data-demo-template-child>Load from template (as child)</button>
+        <button data-demo-template-before>Load from template (before)</button>
+        <button data-demo-template-after>Load from template (after)</button>
+        <script data-demo-template-template type="text/x-handlebars-template">
+            <div>
+                <b>{{this.name}}</b>
+                <div>
+                    <small>{{this.description}}</small>
+                </div>
+            </div>
+        </script>
+        <div class="dashed padded">
+            <div class="dashed padded" data-demo-template-anchor>This is the anchor element</div>
+        </div>
+    </p>
+</div>
+
+<h2>Trigger from DOM</h2>
+<div class="content-box">
+    <p class="marged-left">
+        <div id="demo-template-data">
+            { 
+                "name": "Johnny Johnson",
+                "description": "Such a John"
+            }
+        </div>
+        <script id="demo-template" type="text/x-handlebars-template">
+            <div>
+                <b>{{this.name}}</b>
+                <div>
+                    <small>{{this.description}}</small>
+                </div>
+            </div>
+        </script>
+        <ul>
+            <li>
+                <a href="#" 
+                    data-template-trigger
+                    data-template-id="demo-template"
+                    data-anchor-id="demo-anchor"
+                    data-anchor-type="child"
+                    data-data-id="demo-template-data">
+                    Load template data from DOM (as child)
+                </a>
+            </li>
+            <li>
+                <a href="#" 
+                    data-template-trigger
+                    data-template-id="demo-template"
+                    data-anchor-id="demo-anchor"
+                    data-anchor-type="before"
+                    data-data-id="demo-template-data">
+                    Load template data from DOM (before)
+                </a>
+            </li>
+            <li>
+                <a href="#" 
+                    data-template-trigger
+                    data-template-id="demo-template"
+                    data-anchor-id="demo-anchor"
+                    data-anchor-type="after"
+                    data-data-id="demo-template-data">
+                    Load template data from DOM (after)
+                </a>
+            </li>
+            <li>
+                <a href="#" 
+                    data-template-trigger
+                    data-template-id="demo-template"
+                    data-anchor-id="demo-anchor"
+                    data-anchor-type="child"
+                    data-data-url="/mock/template">
+                    Load template data from URL (child)
+                </a>
+            </li>
+        </ul>
+        <!-- const templateElementId = trigger.dataset.templateId;
+      const anchorElementId = trigger.dataset.anchorId;
+      const anchorType = trigger.dataset.anchorType || 'after';
+      const dataElementId = trigger.dataset.dataId;
+      const dataUrl = trigger.dataset.dataUrl; -->
+
+        <div class="dashed padded">
+            <div class="dashed padded" id="demo-anchor">This is the anchor element</div>
+        </div>
+    </p>
+</div>

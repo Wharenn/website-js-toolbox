@@ -1,0 +1,106 @@
+.SearchModal {
+  display: flex;
+
+  &__Start {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  &__Results {
+    overflow: auto;
+    height: 40vh;
+    
+    &--hidden {
+      display: none;
+    }
+
+    &__ButtonContainer {
+      text-align: center;
+      padding: 1rem;
+    }
+  }
+
+  &__Result {
+    display: flex;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #EEE;
+
+    &__Content {
+      flex-grow: 1;
+      padding: 0.5rem 1rem;
+    }
+
+    &__Picture {
+      width: 4rem;
+      border: 1px solid #eee;
+    }
+
+    &__Title {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    &__Description {
+      font-size: 0.8rem;
+    }
+
+    &__Buttons {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__SearchContainer {
+    flex-grow: 1;
+  }
+
+  &__Selection {
+    width: 33%;
+    border-left: 1px solid #EEE;
+    padding-left: 1rem;
+
+    h3 {
+      margin-top: 0;
+    }
+  }
+
+  &__SelectedItems {
+    padding: 0;
+    list-style: none;
+    max-height: 44vh;
+    overflow: auto;
+  }
+
+  &__SelectedItem {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #EEE;
+    padding: 0.2rem;
+
+    &__Picture {
+      width: 2rem;
+      height: 2rem;
+      border: 1px solid #EEE;
+    }
+
+    &__Name {
+      flex-grow: 1;
+      padding: 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    &__Actions {
+      svg {
+        width: 0.8rem;
+        color: #333;
+      }
+    }
+  }
+
+  &--multiple {
+    .SearchModal__Form,
+    .SearchModal__Results {
+      padding-right: 1rem;
+    }
+  }
+}

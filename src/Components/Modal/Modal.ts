@@ -5,6 +5,7 @@ import './Modal.scss';
 import asyncSubmit, { FormResponse } from '../../Utils/AsyncSubmit';
 import { hideElement } from '../../Utils/Hide';
 import FlashMessages from '../FlashMessages';
+import Translations from '../../Utils/Translations';
 
 interface ModalObject {
   setContent: CallableFunction;
@@ -12,6 +13,14 @@ interface ModalObject {
   open: CallableFunction;
   close: CallableFunction;
   addFooterBtn: CallableFunction;
+}
+
+interface ModalOptions {
+  isLarge?: boolean;
+  hideFooter?: boolean;
+  onOpen?: CallableFunction;
+  onFormSuccess?: CallableFunction;
+  onFormError?: CallableFunction;
 }
 
 /**
@@ -39,14 +48,23 @@ const setLoading = (modal: ModalObject, loadingState: boolean): void => {
   }
 };
 
-const createModal = (onOpen?: CallableFunction): ModalObject => {
+const createModal = (options: ModalOptions = {}): ModalObject => {
+  const hasFooter = options.hideFooter !== true;
+  const cssClass = ['Modal'];
+  if (options.isLarge) {
+    cssClass.push('Modal--large');
+  }
+  if (hasFooter) {
+    cssClass.push('Modal--withFooter');
+  }
+
   const modal = new tingle.modal({
-    footer: true,
-    stickyFooter: true,
+    footer: hasFooter || false,
+    stickyFooter: hasFooter || false,
     closeMethods: ['overlay', 'button', 'escape'],
-    closeLabel: 'Close',
-    cssClass: ['Modal'],
-    onOpen,
+    closeLabel: Translations.trans('global.close'),
+    cssClass,
+    onOpen: options.onOpen,
     onClose: () => {
       modal.destroy();
     },
@@ -103,8 +121,8 @@ const submitModal = (modal: ModalObject, onFormSuccess?: CallableFunction, onFor
 /**
  * Open a modal containing the element targeted by the given id
  */
-const openSelfModal = (elementId: string, onOpen?: CallableFunction): ModalObject => {
-  const modal = createModal(onOpen);
+const openSelfModal = (elementId: string, options: ModalOptions = {}): ModalObject => {
+  const modal = createModal(options);
   const contentElement = document.getElementById(elementId);
   const content = contentElement ? contentElement.innerHTML : `Could not found element with id "${elementId}"`;
 
@@ -117,8 +135,8 @@ const openSelfModal = (elementId: string, onOpen?: CallableFunction): ModalObjec
 /**
  * Open a modal containing the element targeted by the given id
  */
-const openEmptyModal = (onOpen?: CallableFunction): ModalObject => {
-  const modal = createModal(onOpen);
+const openEmptyModal = (options: ModalOptions = {}): ModalObject => {
+  const modal = createModal(options);
   modal.open();
 
   return modal;
@@ -127,13 +145,8 @@ const openEmptyModal = (onOpen?: CallableFunction): ModalObject => {
 /**
  * Open a modal containing the result of an url, with optional callbacks
  */
-const openRemoteModal = (
-  href: string,
-  onOpen?: CallableFunction,
-  onFormSuccess?: CallableFunction,
-  onFormError?: CallableFunction,
-): ModalObject => {
-  const modal = createModal(onOpen);
+const openRemoteModal = (href: string, options: ModalOptions = {}): ModalObject => {
+  const modal = createModal(options);
   setLoading(modal, true);
   modal.open();
 
@@ -142,7 +155,17 @@ const openRemoteModal = (
     .then((response) => {
       setLoading(modal, false);
       modal.setContent(response);
-      const content = modal.getContent();
+      const content: HTMLElement = modal.getContent();
+
+      // Prevent classic submit, plug instead the async submit
+      content.querySelectorAll('form').forEach((element) => {
+        element.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          submitModal(modal, options.onFormSuccess, options.onFormError);
+        });
+      });
+
       content.querySelectorAll('[data-modal-button]').forEach((button: HTMLElement) => {
         const label = button.dataset.modalButtonLabel;
         const isDanger = button.dataset.modalButtonDanger;
@@ -158,7 +181,7 @@ const openRemoteModal = (
           if (button.dataset.modalClose !== undefined) {
             closeModal(modal);
           } else if (button.dataset.modalSubmit !== undefined) {
-            submitModal(modal, onFormSuccess, onFormError);
+            submitModal(modal, options.onFormSuccess, options.onFormError);
           }
         });
         hideElement(button);
@@ -169,13 +192,14 @@ const openRemoteModal = (
 };
 
 const Modal = {
-  open: (url: string, onOpen?: CallableFunction, onFormSuccess?: CallableFunction, onFormError?: CallableFunction): ModalObject => {
-    openRemoteModal(url, onOpen, onFormSuccess, onFormError);
+  openElement: (elementId: string, options: ModalOptions = {}): ModalObject => openSelfModal(elementId, options),
+  openEmpty: (options: ModalOptions = {}): ModalObject => openEmptyModal(options),
+  open: (url: string, options: ModalOptions = {}): ModalObject => {
+    return openRemoteModal(url, options);
   },
-  openElement: (elementId: string, onOpen?: CallableFunction): ModalObject => openSelfModal(elementId, onOpen),
-  openEmpty: (onOpen?: CallableFunction): ModalObject => openEmptyModal(onOpen),
 
   setContent: (modal: ModalObject, content: string): void => modal.setContent(content),
+  setLoading: (modal: ModalObject, loadingState: boolean): void => setLoading(modal, loadingState),
 
   attachToDOM: (element?: HTMLElement): void => {
     (element || document).querySelectorAll<HTMLElement>('[data-modal-open]').forEach((el) => {

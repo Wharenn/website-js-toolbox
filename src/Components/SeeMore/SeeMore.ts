@@ -7,10 +7,20 @@ import FlashMessages from '../FlashMessages';
 import Translations from '../../Utils/Translations';
 import { SeeMore } from '../../index';
 
+Handlebars.registerHelper('escape', (variable: string) => {
+  return variable.replace(/(['"])/g, '\\$1');
+});
+
+interface SeeMoreResponse {
+  items: Array<Record<string, unknown>>;
+  nextLink?: string;
+}
+
 const insertItems = (
   container: HTMLElement,
   beforeElement: HTMLElement,
-  data: Record<string, unknown>,
+  link: HTMLElement,
+  data: SeeMoreResponse,
   template: CallableFunction,
   onUpdate?: CallableFunction,
 ): void => {
@@ -19,6 +29,15 @@ const insertItems = (
 
   if (onUpdate) {
     onUpdate(newNodes);
+  }
+
+  if (data.nextLink) {
+    // There is still content, update link
+    link.setAttribute('href', data.nextLink);
+    showElement(link);
+  } else {
+    // No next link, end of results, hide link
+    link.remove();
   }
 };
 
@@ -39,7 +58,7 @@ export default {
     if (initialItems) {
       try {
         const items = JSON.parse(initialItems.innerHTML);
-        insertItems(container, bottomLine, items, template, onUpdate);
+        insertItems(container, bottomLine, link, items, template, onUpdate);
       } catch (error) {
         Logger.warn('Failed to parse initial see more items.');
       }
@@ -48,8 +67,13 @@ export default {
     let isFetching = false;
     const loader = document.createElement('div');
     loader.classList.add('SeeMore__Loader');
-    loader.innerHTML = Loader.getThreeDots();
+    loader.innerHTML = Loader.getLoaderContent();
 
+    if (link.dataset.hasListener) {
+      return;
+    }
+
+    link.dataset.hasListener = 'true';
     link.addEventListener('click', (e) => {
       e.preventDefault();
 
@@ -75,23 +99,26 @@ export default {
           }
 
           // Insert new content
-          insertItems(container, bottomLine, response.data, template, onUpdate);
-
-          if (response.data.nextLink) {
-            // There is still content, update link
-            link.setAttribute('href', response.data.nextLink);
-            showElement(link);
-          } else {
-            // No next link, end of results, hide link
-            link.remove();
-          }
+          insertItems(container, bottomLine, link, response.data, template, onUpdate);
         })
         .catch(() => {
           loader.remove();
           isFetching = false;
+          showElement(link);
 
           FlashMessages.error(Translations.trans('global.error'));
         });
+    });
+  },
+
+  clear: (container: HTMLElement): void => {
+    const initialItems = container.querySelector('[data-seemore-initial-items]');
+    if (initialItems) {
+      initialItems.innerHTML = '';
+    }
+
+    container.querySelectorAll('[data-seemore-item]').forEach((item) => {
+      item.remove();
     });
   },
 
