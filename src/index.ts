@@ -3,6 +3,7 @@ export { default as AsyncSubmit } from './Utils/AsyncSubmit';
 export { default as HTMLElementFiller } from './Utils/HTMLElementFiller';
 export { default as Logger } from './Utils/Logger';
 export { default as Loader } from './Utils/Loader';
+export { default as HistoryStorage } from './Utils/HistoryStorage';
 
 // Components
 export { default as Dialogs } from './Components/Dialogs';

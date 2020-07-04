@@ -1,5 +1,4 @@
 import * as WebsiteJsToolbox from 'website-js-toolbox';
-import { template } from '@babel/core';
 const { Template, FlashMessages } = WebsiteJsToolbox;
 
 const data = {

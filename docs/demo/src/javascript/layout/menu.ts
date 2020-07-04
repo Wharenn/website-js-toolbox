@@ -6,6 +6,7 @@ import SearchModal from '../pages/searchModal';
 import SeeMore from '../pages/seeMore';
 import Template from '../pages/template';
 import HtmlElementFiller from '../pages/htmlElementFiller';
+import HistoryStorage from '../pages/historyStorage';
 
 interface Page {
   id: string;
@@ -53,6 +54,11 @@ const pages = [
     id: 'htmlElementFiller',
     title: 'HTMLElement Filler',
     onLoaded: () => HtmlElementFiller.init(),
+  },
+  {
+    id: 'historyStorage',
+    title: 'HistoryStorage',
+    onLoaded: () => HistoryStorage.init(),
   },
 ];
 
