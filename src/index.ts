@@ -4,6 +4,7 @@ export { default as HTMLElementFiller } from './Utils/HTMLElementFiller';
 export { default as Logger } from './Utils/Logger';
 export { default as Loader } from './Utils/Loader';
 export { default as HistoryStorage } from './Utils/HistoryStorage';
+export { default as Toggler } from './Utils/Toggler';
 
 // Components
 export { default as Dialogs } from './Components/Dialogs';

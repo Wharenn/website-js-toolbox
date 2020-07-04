@@ -7,6 +7,7 @@ import SeeMore from '../pages/seeMore';
 import Template from '../pages/template';
 import HtmlElementFiller from '../pages/htmlElementFiller';
 import HistoryStorage from '../pages/historyStorage';
+import Toggler from '../pages/toggler';
 
 interface Page {
   id: string;
@@ -59,6 +60,11 @@ const pages = [
     id: 'historyStorage',
     title: 'HistoryStorage',
     onLoaded: () => HistoryStorage.init(),
+  },
+  {
+    id: 'toggler',
+    title: 'Toggler',
+    onLoaded: () => Toggler.init(),
   },
 ];
 
