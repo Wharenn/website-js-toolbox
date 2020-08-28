@@ -83,7 +83,8 @@ const onTriggerClick = (e: Event) => {
         insertedLoadingElement.remove();
         Template.apply(templateElement, response, anchorElement, anchorType);
       })
-      .catch(() => {
+      .catch((error) => {
+        console.error(error);
         FlashMessages.error(Translations.trans('global.error'));
       });
   }
