@@ -1,6 +1,6 @@
 {
   "name": "website-js-toolbox",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Set of javascript tools and behaviors to use atop classical back applications.",
   "main": "dist/website-js-toolbox.min.js",
   "scripts": {
