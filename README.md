@@ -10,6 +10,7 @@ Set of javascript tools and behaviors to use atop classical back applications.
 ```bash
 npm install website-js-toolbox
 ```
+
 ```bash
 yarn add website-js-toolbox
 ```
@@ -40,14 +41,10 @@ See the application and code located in `docs/demo` directory to have more infor
 
 ## Executing the Demo App
 
-This library comes with a full demo of all components. 
+This library comes with a full demo of all components.
 
-Install `local-web-server` if you do not have it yet:
-```bash
-npm install -g local-web-server
-```
+The demo can be initialized with:
 
-Then, the demo can be initialized with:
 ```bash
 npm run demo:install
 npm run demo:start
@@ -55,7 +52,7 @@ npm run demo:start
 
 The demo should be available at <http://127.0.0.1:8000/public/index.html>.
 
-## Development 
+## Development
 
 Developping tools is pretty straighforward thanks to the demo.
 
@@ -66,17 +63,21 @@ npm run dev
 ````
 
 2. Start watchers for the demo:
+
 ```bash
 npm run demo:install
 ```
 
 3. Start the demo:
+
 ```bash
 npm run demo:start
 ```
 
 ## Contributing
+
 This project is not open to contributions, but feel free to use it according to the terms of the license.
 
 ## License
+
 [MIT](./LICENSE.md)
